@@ -8,9 +8,10 @@ function keep_single_space(string) {
 			var regExp = /\(([^)]+)\)/;
 			var matches = regExp.exec(err);
 			var er = new TypeError('provided parameter must be of string type. [keep_single_space(param:string)]\n'+matches[1]);
-			throw er;// `TypeError: . (${matches[1]})`;
+			throw er;
 		}
 	}
+	return string;
 }
 
 module.exports = keep_single_space;

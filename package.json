@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/krisalay/codexia#readme",
   "dependencies": {
+    "joi": "10.4.2",
     "lodash": "4.17.4"
   }
 }
