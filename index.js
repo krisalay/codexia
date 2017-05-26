@@ -1,6 +1,8 @@
-const  string = require('./designer/string');
+const string = require('./designer/string');
 const similarity = require('./designer/similarity');
+const array = require('./designer/array');
 module.exports = {
 	string: string,
-	similarity: similarity
+	similarity: similarity,
+	array: array
 };
