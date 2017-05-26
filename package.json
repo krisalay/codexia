@@ -19,5 +19,8 @@
   "dependencies": {
     "joi": "10.4.2",
     "lodash": "4.17.4"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1"
   }
 }
