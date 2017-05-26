@@ -1,21 +1,6 @@
 const lodash = require('lodash');
 const string = require('../../string');
-
-function count(ary, classifier) {
-	return ary.reduce((counter,item)=>{
-		let p = (classifier || String)(item);
-		counter[p] = counter.hasOwnProperty(p) ? counter[p]+1 :1;
-		return counter;
-	},{});
-}
-
-function sumOfSquare(arr){
-	let result = 0;
-	arr.map((i)=>{
-		result += i*i;
-	});
-	return result;
-}
+const array = require('../../array');
 
 function cosine_similarity(sentence1, sentence2) {
 	sentence1 = string.clean_punctuation(sentence1);
@@ -25,8 +10,8 @@ function cosine_similarity(sentence1, sentence2) {
 	let sen1_buff = sentence1.split(' ');
 	let sen2_buff = sentence2.split(' ');
 	let main_buff = lodash.union(sen1_buff, sen2_buff);
-	let dict_sen1 = count(sen1_buff);
-	let dict_sen2 = count(sen2_buff);
+	let dict_sen1 = array.getCountAsDictionary(sen1_buff);
+	let dict_sen2 = array.getCountAsDictionary(sen2_buff);
 	let vec_sen1 = [];
 	let vec_sen2 = [];
 	for(let sen_index in main_buff) {
@@ -45,8 +30,8 @@ function cosine_similarity(sentence1, sentence2) {
 	for(let i in vec_sen1){
 		numerator += vec_sen1[i]*vec_sen2[i];
 	}
-	let mod_d1 = Math.sqrt(sumOfSquare(vec_sen1));
-	let mod_d2 = Math.sqrt(sumOfSquare(vec_sen2));
+	let mod_d1 = Math.sqrt(array.sumOfSquare(vec_sen1));
+	let mod_d2 = Math.sqrt(array.sumOfSquare(vec_sen2));
 	return numerator/(mod_d1*mod_d2);
 }
 module.exports = cosine_similarity;
